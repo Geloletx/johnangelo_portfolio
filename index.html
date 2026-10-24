@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Angelo">
+<meta name="theme-color" content="#0a0f1e">
+<meta name="description" content="John Angelo Lumor: SAP integration developer (PI/PO and CPI) with an electronics engineering background.">
+<title>John Angelo Lumor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0f1e;
+    --bg2: #0f1730;
+    --glass: rgba(255,255,255,.055);
+    --glass-line: rgba(255,255,255,.12);
+    --text: #eef2fb;
+    --muted: #9aa6c0;
+    --accent: #5eead4;
+    --accent2: #a78bfa;
+    --grad: linear-gradient(120deg, #5eead4, #a78bfa);
+    --radius: 22px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; color: var(--text); background: var(--bg);
+    font: 17px/1.65 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    -webkit-text-size-adjust: 100%;
+    background-image:
+      radial-gradient(900px 500px at 85% -10%, rgba(167,139,250,.22), transparent 60%),
+      radial-gradient(800px 500px at -10% 10%, rgba(94,234,212,.16), transparent 60%);
+    background-attachment: fixed;
+  }
+  h1, h2, h3 { font-family: "Space Grotesk", Inter, sans-serif; margin: 0; line-height: 1.12; letter-spacing: -.02em; }
+  a { color: var(--accent); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 22px; }
+  .grad-text { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  /* nav */
+  nav { position: sticky; top: 10px; z-index: 20; padding: 0 12px; }
+  nav .bar {
+    max-width: 720px; margin: 10px auto 0; display: flex; gap: 4px; overflow-x: auto;
+    padding: 6px; border-radius: 999px; background: rgba(10,15,30,.7);
+    border: 1px solid var(--glass-line);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    scrollbar-width: none;
+  }
+  nav .bar::-webkit-scrollbar { display: none; }
+  nav a {
+    flex: none; text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 600;
+    padding: 8px 14px; border-radius: 999px;
+  }
+  nav a:hover { color: var(--text); background: var(--glass); }
+
+  /* hero */
+  .hero { padding: 70px 0 30px; }
+  .hero-grid { display: grid; gap: 40px; align-items: center; grid-template-columns: 1.3fr 1fr; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600;
+    padding: 7px 14px; border-radius: 999px; background: var(--glass); border: 1px solid var(--glass-line); color: var(--muted);
+  }
+  .pill i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+  .hero h1 { font-size: clamp(42px, 9vw, 78px); margin: 18px 0 16px; }
+  .hero .lead { font-size: 20px; color: var(--muted); max-width: 540px; margin: 0 0 28px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-block; padding: 14px 24px; border-radius: 999px; font-weight: 700; font-size: 16px;
+    text-decoration: none; border: 1px solid var(--glass-line); color: var(--text); background: var(--glass);
+  }
+  .btn.primary { background: var(--grad); color: #07101a; border: none; }
+
+  .portrait-wrap { position: relative; justify-self: center; width: min(320px, 80vw); aspect-ratio: 1; }
+  .portrait-wrap::before {
+    content: ""; position: absolute; inset: -14px; border-radius: 50%;
+    background: conic-gradient(from 0deg, #5eead4, #a78bfa, #5eead4);
+    filter: blur(22px); opacity: .55; animation: spin 14s linear infinite;
+  }
+  .portrait {
+    position: relative; width: 100%; height: 100%; border-radius: 50%; overflow: hidden;
+    border: 2px solid var(--glass-line);
+    background: linear-gradient(145deg, #172044, #0f1730);
+    display: grid; place-items: center;
+  }
+  .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
+  .portrait span { font: 700 84px "Space Grotesk", sans-serif; opacity: .9; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .stats { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 50px; }
+  .stat { padding: 18px 20px; border-radius: 18px; background: var(--glass); border: 1px solid var(--glass-line); }
+  .stat b { display: block; font: 700 30px "Space Grotesk", sans-serif; }
+  .stat span { color: var(--muted); font-size: 14px; }
+
+  /* sections */
+  section { padding: 70px 0 10px; }
+  .kicker { color: var(--accent); font-weight: 700; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; }
+  section h2 { font-size: clamp(30px, 6vw, 46px); margin: 10px 0 14px; }
+  .sub { color: var(--muted); max-width: 620px; margin: 0 0 30px; }
+
+  .card {
+    background: var(--glass); border: 1px solid var(--glass-line); border-radius: var(--radius); padding: 22px;
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  }
+  .card h3 { font-size: 20px; margin-bottom: 6px; }
+  .card p { margin: 0; color: var(--muted); font-size: 15.5px; }
+
+  /* about bento */
+  .bento { display: grid; gap: 14px; grid-template-columns: repeat(6, 1fr); }
+  .bento .b1 { grid-column: span 4; }
+  .bento .b2 { grid-column: span 2; }
+  .bento .b3 { grid-column: span 3; }
+
+  /* skills */
+  .skill-group { margin-bottom: 22px; }
+  .skill-group h3 { font: 600 14px Inter, sans-serif; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 12px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 9px; margin: 0; padding: 0; list-style: none; }
+  .chips li { padding: 8px 15px; border-radius: 999px; font-size: 14.5px; font-weight: 600; background: var(--glass); border: 1px solid var(--glass-line); }
+
+  /* diagrams */
+  .diagram { padding: 18px; margin-bottom: 16px; }
+  .diagram h3 { font-size: 19px; margin: 4px 6px 4px; }
+  .diagram > p { margin: 0 6px 14px; color: var(--muted); font-size: 15px; }
+  .diagram svg { width: 100%; height: auto; display: block; }
+  .d-node { fill: rgba(255,255,255,.06); stroke: rgba(255,255,255,.2); stroke-width: 1.2; }
+  .d-sub { fill: rgba(94,234,212,.1); stroke: rgba(94,234,212,.4); stroke-width: 1; }
+  .d-bar { fill: rgba(167,139,250,.1); stroke: rgba(167,139,250,.4); stroke-width: 1; }
+  .d-t { fill: #eef2fb; font: 600 14px Inter, sans-serif; }
+  .d-s { fill: #9aa6c0; font: 500 12px Inter, sans-serif; }
+  .d-badge { fill: url(#gbadge); }
+  .d-flow { stroke: #5eead4; stroke-width: 2; fill: none; stroke-dasharray: 6 6; animation: flow 1s linear infinite; }
+  @keyframes flow { to { stroke-dashoffset: -12; } }
+  .note { color: var(--muted); font-size: 13px; margin: 6px 6px 0; }
+
+  /* experience */
+  .timeline { position: relative; padding-left: 26px; }
+  .timeline::before { content: ""; position: absolute; left: 6px; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(var(--accent), var(--accent2)); opacity: .5; }
+  .job { position: relative; margin-bottom: 16px; }
+  .job::before {
+    content: ""; position: absolute; left: -26px; top: 26px; width: 14px; height: 14px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 14px var(--accent);
+  }
+  .job .meta { color: var(--accent); font-size: 14px; font-weight: 600; margin: 4px 0 12px; }
+  .job ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 15.5px; }
+  .job li { margin-bottom: 6px; }
+
+  /* photos */
+  .photo {
+    position: relative; margin: 0; overflow: hidden; border-radius: var(--radius); min-height: 220px;
+    border: 1px solid var(--glass-line);
+    background: linear-gradient(145deg, rgba(94,234,212,.14), rgba(167,139,250,.16)), var(--bg2);
+    display: flex; align-items: flex-end;
+  }
+  .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .photo .ph { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; color: var(--muted); font-size: 13px; padding: 20px; }
+  .photo .ph b { display: block; font: 600 28px "Space Grotesk", sans-serif; color: var(--text); opacity: .75; margin-bottom: 6px; }
+  .photo figcaption {
+    position: relative; width: 100%; padding: 36px 18px 16px; font-weight: 600; font-size: 15px;
+    background: linear-gradient(transparent, rgba(5,8,18,.85));
+  }
+  .photo figcaption small { display: block; color: #c4cce0; font-weight: 400; font-size: 13px; }
+  .gallery { display: grid; gap: 14px; grid-template-columns: repeat(6, 1fr); }
+  .gallery .g1 { grid-column: span 3; min-height: 360px; }
+  .gallery .g2 { grid-column: span 3; min-height: 360px; }
+  .gallery .g1 img { object-position: 50% 30%; }
+  .gallery .g2 img { object-position: 50% 45%; }
+  .gallery .g3, .gallery .g4 { grid-column: span 3; }
+  .builds { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .builds .photo { min-height: 190px; }
+  .mini { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 14px; }
+
+  .personal { background: linear-gradient(135deg, rgba(94,234,212,.1), rgba(167,139,250,.12)); }
+
+  footer { padding: 60px 0 70px; text-align: center; color: var(--muted); font-size: 14px; }
+
+  /* scroll reveal (only when JS is on) */
+  .js .reveal { opacity: 0; transform: translateY(26px) scale(.98); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+  .js .reveal.in { opacity: 1; transform: none; }
+  .js .reveal.done { transition: transform .25s ease, border-color .25s ease, opacity .25s ease; transition-delay: 0s !important; }
+  .js .reveal.done:hover { transform: translateY(-5px); border-color: rgba(94,234,212,.45); }
+
+  /* hero entrance */
+  .js .rise { opacity: 0; transform: translateY(26px); animation: rise .9s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: var(--d, 0s); }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+
+  /* floating and drifting */
+  .portrait-wrap { animation: bob 6s ease-in-out infinite; }
+  @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  .orb { position: fixed; border-radius: 50%; filter: blur(80px); opacity: .32; z-index: -1; pointer-events: none; }
+  .orb.o1 { width: 380px; height: 380px; background: #5eead4; top: 8%; left: -120px; animation: drift1 18s ease-in-out infinite; }
+  .orb.o2 { width: 440px; height: 440px; background: #a78bfa; bottom: -80px; right: -140px; animation: drift2 22s ease-in-out infinite; }
+  @keyframes drift1 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(160px, 120px); } }
+  @keyframes drift2 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-180px, -140px); } }
+
+  /* scroll progress bar */
+  .progress { position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: var(--grad); transform-origin: 0 50%; transform: scaleX(0); z-index: 50; }
+
+  /* scrolling marquee */
+  .marquee {
+    overflow: hidden; margin-top: 56px; padding: 14px 0;
+    border-top: 1px solid var(--glass-line); border-bottom: 1px solid var(--glass-line);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .marquee .track { display: flex; width: max-content; animation: scroll 34s linear infinite; }
+  .marquee span { font: 600 15px "Space Grotesk", sans-serif; color: var(--muted); white-space: nowrap; padding-right: 38px; }
+  .marquee span::after { content: "\2726"; margin-left: 38px; color: var(--accent); }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+
+  /* small interactions */
+  .chips li { transition: transform .2s ease, border-color .2s ease; }
+  .chips li:hover { transform: translateY(-3px) scale(1.05); border-color: var(--accent); }
+  .packet { filter: drop-shadow(0 0 5px #5eead4); }
+  #role { display: inline-block; transition: opacity .35s ease, transform .35s ease; }
+  #role.swap { opacity: 0; transform: translateY(6px); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .js .reveal, .js .rise { opacity: 1; transform: none; transition: none; animation: none; }
+    .portrait-wrap, .portrait-wrap::before, .d-flow, .orb, .marquee .track { animation: none; }
+    .packet { display: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  @media (max-width: 760px) {
+    .hero { padding-top: 40px; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .portrait-wrap { order: -1; width: min(230px, 62vw); }
+    .bento .b1, .bento .b2, .bento .b3 { grid-column: span 6; }
+    .gallery .g1, .gallery .g2, .gallery .g3, .gallery .g4 { grid-column: span 6; min-height: 240px; }
+  }
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+<div class="progress"></div>
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+
+<nav>
+  <div class="bar">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#how">How I Build</a>
+    <a href="#experience">Experience</a>
+    <a href="#builds">Builds</a>
+    <a href="#life">Life</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="pill rise" style="--d:0s"><i></i> <span id="role">SAP Integration Developer</span></span>
+        <h1 class="rise" style="--d:.15s">John Angelo <span class="grad-text">Lumor</span></h1>
+        <p class="lead rise" style="--d:.3s">I connect systems so businesses run smoothly. Electronics engineer by training, SAP PI/PO and CPI developer by trade.</p>
+        <div class="btns rise" style="--d:.45s">
+          <a class="btn primary" href="#contact">Get in touch</a>
+          <a class="btn" href="#how">See how I build</a>
+        </div>
+      </div>
+      <div class="portrait-wrap">
+        <div class="portrait">
+          <span>JA</span>
+          <!-- PHOTO: upload your picture as profile.jpg -->
+          <img src="profile.jpg" alt="Portrait of John Angelo Lumor" onerror="this.remove()">
+        </div>
+      </div>
+    </div>
+
+    <div class="stats reveal">
+      <div class="stat"><b data-count="5" data-suffix="+ yrs">5+ yrs</b><span>SAP integration</span></div>
+      <div class="stat"><b data-count="10000" data-suffix="">10,000</b><span>orders per hour, peak project</span></div>
+      <div class="stat"><b>CPI + GenAI</b><span>certified</span></div>
+      <div class="stat"><b>ECE</b><span>microelectronics engineer</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>SAP PI/PO</span><span>SAP CPI</span><span>REST APIs</span><span>Message Mapping</span>
+    <span>S/4HANA</span><span>ECC</span><span>Azure</span><span>Postman</span>
+    <span>ActiveControl</span><span>Figaf</span><span>Python</span><span>Java</span><span>FPGA</span>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section id="about">
+    <div class="kicker">About</div>
+    <h2>From circuits to cloud integration</h2>
+    <div class="bento">
+      <div class="card b1 reveal">
+        <h3>What I do</h3>
+        <p>I build and support SAP integrations: interface development, migrations, API-based connections, and production support. I know the full range of adapters and mapping functionality, and I have worked across ECC, S/4HANA, third-party systems, and Azure.</p>
+      </div>
+      <div class="card b2 reveal">
+        <h3>Where I'm heading</h3>
+        <p>SAP Cloud Integration (CPI) platform and migration work, starting November 2026.</p>
+      </div>
+      <div class="card b3 reveal">
+        <h3>Where I started</h3>
+        <p>A BS in Electronics and Communications Engineering, majoring in Microelectronics, with hands-on builds in FPGA, IoT, and embedded systems.</p>
+      </div>
+      <div class="card b3 reveal">
+        <h3>How I work</h3>
+        <p>Calm under pressure, curious about root causes, and comfortable owning a system end to end, including nights and critical incidents.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="kicker">Skills</div>
+    <h2>Toolbox</h2>
+    <div class="card reveal">
+      <div class="skill-group">
+        <h3>SAP Integration</h3>
+        <ul class="chips">
+          <li>SAP PI/PO</li><li>SAP CPI</li><li>All adapters</li><li>Message mapping</li>
+          <li>Dynamic configuration</li><li>PI to PO migration</li><li>REST APIs</li><li>API management</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Systems and Tools</h3>
+        <ul class="chips">
+          <li>SAP ECC</li><li>SAP S/4HANA</li><li>Azure</li><li>Third-party systems</li><li>Postman</li>
+          <li>CTS</li><li>ActiveControl</li><li>Figaf</li><li>Solution Manager</li><li>Redwood RunMyJobs</li>
+        </ul>
+      </div>
+      <div class="skill-group" style="margin-bottom:0">
+        <h3>Programming and Electronics</h3>
+        <ul class="chips">
+          <li>Python</li><li>Java</li><li>C++</li><li>MATLAB</li><li>FPGA</li><li>Microcontrollers</li><li>Raspberry Pi</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="kicker">How I build</div>
+    <h2>Integration, at a glance</h2>
+    <p class="sub">Sample high-level diagrams that show how I approach common integration work. They are illustrative and contain no client details.</p>
+
+    <!-- DIAGRAM 1 -->
+    <div class="card diagram reveal">
+      <h3>Integration landscape</h3>
+      <p>Systems on the left send messages through the integration layer, which transforms and routes them to the right.</p>
+      <svg viewBox="0 0 820 400" role="img" aria-label="Diagram of an integration landscape: source systems flow into SAP PO or CPI, then out to partner systems, APIs, and cloud apps">
+        <defs>
+          <marker id="a1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5eead4"/></marker>
+          <linearGradient id="gcore" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5eead4" stop-opacity=".22"/><stop offset="1" stop-color="#a78bfa" stop-opacity=".25"/></linearGradient>
+        </defs>
+        <rect class="d-node" x="20" y="50" width="190" height="64" rx="14"/>
+        <text class="d-t" x="115" y="78" text-anchor="middle">SAP ECC / S/4HANA</text>
+        <text class="d-s" x="115" y="98" text-anchor="middle">Core business systems</text>
+        <rect class="d-node" x="20" y="140" width="190" height="64" rx="14"/>
+        <text class="d-t" x="115" y="168" text-anchor="middle">Third-party apps</text>
+        <text class="d-s" x="115" y="188" text-anchor="middle">External platforms</text>
+        <rect class="d-node" x="20" y="230" width="190" height="64" rx="14"/>
+        <text class="d-t" x="115" y="258" text-anchor="middle">Azure services</text>
+        <text class="d-s" x="115" y="278" text-anchor="middle">Cloud endpoints</text>
+
+        <rect x="300" y="26" width="220" height="288" rx="24" fill="url(#gcore)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+        <text class="d-t" x="410" y="58" text-anchor="middle" style="font-size:17px">SAP PO / CPI</text>
+        <rect class="d-sub" x="325" y="78" width="170" height="40" rx="10"/><text class="d-t" x="410" y="103" text-anchor="middle">Adapters</text>
+        <rect class="d-sub" x="325" y="130" width="170" height="40" rx="10"/><text class="d-t" x="410" y="155" text-anchor="middle">Message mapping</text>
+        <rect class="d-sub" x="325" y="182" width="170" height="40" rx="10"/><text class="d-t" x="410" y="207" text-anchor="middle">Routing</text>
+        <rect class="d-sub" x="325" y="234" width="170" height="40" rx="10"/><text class="d-t" x="410" y="259" text-anchor="middle">Error handling</text>
+
+        <rect class="d-node" x="610" y="50" width="190" height="64" rx="14"/>
+        <text class="d-t" x="705" y="78" text-anchor="middle">Partner systems</text>
+        <text class="d-s" x="705" y="98" text-anchor="middle">B2B connections</text>
+        <rect class="d-node" x="610" y="140" width="190" height="64" rx="14"/>
+        <text class="d-t" x="705" y="168" text-anchor="middle">REST APIs</text>
+        <text class="d-s" x="705" y="188" text-anchor="middle">Managed endpoints</text>
+        <rect class="d-node" x="610" y="230" width="190" height="64" rx="14"/>
+        <text class="d-t" x="705" y="258" text-anchor="middle">Cloud applications</text>
+        <text class="d-s" x="705" y="278" text-anchor="middle">SaaS and platforms</text>
+
+        <path class="d-flow" d="M212 82 H294" marker-end="url(#a1)"/>
+        <path class="d-flow" d="M212 172 H294" marker-end="url(#a1)"/>
+        <path class="d-flow" d="M212 262 H294" marker-end="url(#a1)"/>
+        <path class="d-flow" d="M524 82 H604" marker-end="url(#a1)"/>
+        <path class="d-flow" d="M524 172 H604" marker-end="url(#a1)"/>
+        <path class="d-flow" d="M524 262 H604" marker-end="url(#a1)"/>
+        <circle class="packet" r="4.5" fill="#fff"><animateMotion dur="1.8s" repeatCount="indefinite" path="M212 82 H294"/></circle>
+        <circle class="packet" r="4.5" fill="#fff"><animateMotion dur="1.8s" begin="0.6s" repeatCount="indefinite" path="M212 172 H294"/></circle>
+        <circle class="packet" r="4.5" fill="#fff"><animateMotion dur="1.8s" begin="1.2s" repeatCount="indefinite" path="M212 262 H294"/></circle>
+        <circle class="packet" r="4.5" fill="#fff"><animateMotion dur="1.8s" begin="0.9s" repeatCount="indefinite" path="M524 82 H604"/></circle>
+        <circle class="packet" r="4.5" fill="#fff"><animateMotion dur="1.8s" begin="1.5s" repeatCount="indefinite" path="M524 172 H604"/></circle>
+        <circle class="packet" r="4.5" fill="#fff"><animateMotion dur="1.8s" begin="0.3s" repeatCount="indefinite" path="M524 262 H604"/></circle>
+
+        <rect class="d-bar" x="20" y="336" width="780" height="46" rx="14"/>
+        <text class="d-t" x="410" y="364" text-anchor="middle">Change and monitoring:  CTS · ActiveControl · Figaf · Solution Manager</text>
+      </svg>
+    </div>
+
+    <!-- DIAGRAM 2 -->
+    <div class="card diagram reveal">
+      <h3>PI to PO migration approach</h3>
+      <p>A repeatable path for moving interfaces adapter by adapter.</p>
+      <svg viewBox="0 0 820 130" role="img" aria-label="Five step migration flow: inventory, map adapters, rebuild, test, cut over">
+        <defs><marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5eead4"/></marker></defs>
+        <rect class="d-node" x="10" y="25" width="120" height="80" rx="14"/><text class="d-s" x="70" y="52" text-anchor="middle">Step 1</text><text class="d-t" x="70" y="76" text-anchor="middle">Inventory</text><text class="d-s" x="70" y="94" text-anchor="middle">interfaces</text>
+        <rect class="d-node" x="180" y="25" width="120" height="80" rx="14"/><text class="d-s" x="240" y="52" text-anchor="middle">Step 2</text><text class="d-t" x="240" y="76" text-anchor="middle">Map</text><text class="d-s" x="240" y="94" text-anchor="middle">adapters</text>
+        <rect class="d-node" x="350" y="25" width="120" height="80" rx="14"/><text class="d-s" x="410" y="52" text-anchor="middle">Step 3</text><text class="d-t" x="410" y="76" text-anchor="middle">Rebuild</text><text class="d-s" x="410" y="94" text-anchor="middle">and configure</text>
+        <rect class="d-node" x="520" y="25" width="120" height="80" rx="14"/><text class="d-s" x="580" y="52" text-anchor="middle">Step 4</text><text class="d-t" x="580" y="76" text-anchor="middle">Test</text><text class="d-s" x="580" y="94" text-anchor="middle">end to end</text>
+        <rect class="d-sub" x="690" y="25" width="120" height="80" rx="14"/><text class="d-s" x="750" y="52" text-anchor="middle">Step 5</text><text class="d-t" x="750" y="76" text-anchor="middle">Cut over</text><text class="d-s" x="750" y="94" text-anchor="middle">and support</text>
+        <path class="d-flow" d="M132 65 H176" marker-end="url(#a2)"/>
+        <path class="d-flow" d="M302 65 H346" marker-end="url(#a2)"/>
+        <path class="d-flow" d="M472 65 H516" marker-end="url(#a2)"/>
+        <path class="d-flow" d="M642 65 H686" marker-end="url(#a2)"/>
+        <circle class="packet" r="4.5" fill="#fff"><animateMotion dur="1.4s" repeatCount="indefinite" path="M132 65 H176"/></circle>
+        <circle class="packet" r="4.5" fill="#fff"><animateMotion dur="1.4s" begin="0.35s" repeatCount="indefinite" path="M302 65 H346"/></circle>
+        <circle class="packet" r="4.5" fill="#fff"><animateMotion dur="1.4s" begin="0.7s" repeatCount="indefinite" path="M472 65 H516"/></circle>
+        <circle class="packet" r="4.5" fill="#fff"><animateMotion dur="1.4s" begin="1.05s" repeatCount="indefinite" path="M642 65 H686"/></circle>
+      </svg>
+    </div>
+
+    <!-- DIAGRAM 3 -->
+    <div class="card diagram reveal">
+      <h3>Peak-season order flow</h3>
+      <p>Preparing the integration layer for bulk order days such as 11.11 and Black Friday.</p>
+      <svg viewBox="0 0 820 200" role="img" aria-label="Order channels flow through a tuned integration layer into the ERP, handling 10,000 orders per hour">
+        <defs>
+          <marker id="a3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5eead4"/></marker>
+          <linearGradient id="gbadge" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5eead4"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+          <linearGradient id="gcore3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5eead4" stop-opacity=".2"/><stop offset="1" stop-color="#a78bfa" stop-opacity=".22"/></linearGradient>
+        </defs>
+        <rect class="d-node" x="10" y="65" width="170" height="80" rx="14"/><text class="d-t" x="95" y="100" text-anchor="middle">Order channels</text><text class="d-s" x="95" y="120" text-anchor="middle">Web, apps, partners</text>
+        <rect x="260" y="50" width="300" height="110" rx="20" fill="url(#gcore3)" stroke="rgba(255,255,255,.3)" stroke-width="1.2"/>
+        <text class="d-t" x="410" y="95" text-anchor="middle" style="font-size:16px">Integration layer</text>
+        <text class="d-s" x="410" y="118" text-anchor="middle">Optimized channels</text>
+        <text class="d-s" x="410" y="136" text-anchor="middle">and tuned configuration</text>
+        <rect class="d-badge" x="325" y="8" width="170" height="30" rx="15"/>
+        <text x="410" y="28" text-anchor="middle" style="fill:#07101a;font:700 13px Inter,sans-serif">10,000 orders / hour</text>
+        <rect class="d-node" x="640" y="65" width="170" height="80" rx="14"/><text class="d-t" x="725" y="100" text-anchor="middle">ERP backend</text><text class="d-s" x="725" y="120" text-anchor="middle">Order processing</text>
+        <path class="d-flow" d="M182 105 H254" marker-end="url(#a3)"/>
+        <path class="d-flow" d="M562 105 H634" marker-end="url(#a3)"/>
+        <circle class="packet" r="4.5" fill="#fff"><animateMotion dur="1.2s" repeatCount="indefinite" path="M182 105 H254"/></circle>
+        <circle class="packet" r="4.5" fill="#fff"><animateMotion dur="1.2s" begin="0.4s" repeatCount="indefinite" path="M182 105 H254"/></circle>
+        <circle class="packet" r="4.5" fill="#fff"><animateMotion dur="1.2s" begin="0.2s" repeatCount="indefinite" path="M562 105 H634"/></circle>
+        <circle class="packet" r="4.5" fill="#fff"><animateMotion dur="1.2s" begin="0.6s" repeatCount="indefinite" path="M562 105 H634"/></circle>
+      </svg>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="kicker">Experience</div>
+    <h2>Where I've worked</h2>
+    <div class="timeline">
+      <div class="card job reveal">
+        <h3>Senior Developer, SAP PO / CPI</h3>
+        <div class="meta">DXC Technology · July 2025 to present</div>
+        <ul>
+          <li>SAP PO subject matter expert and sole SAP PO resource on the project</li>
+          <li>Own incidents, upgrades, releases, and development</li>
+          <li>Moving to the CPI platform and CPI migration from November 2026</li>
+        </ul>
+      </div>
+      <div class="card job reveal">
+        <h3>SAP PI/PO Consultant</h3>
+        <div class="meta">Accenture · April 2021 to June 2025</div>
+        <ul>
+          <li>Prepared systems for 11.11 and Black Friday, processing 10,000 orders per hour</li>
+          <li>Migrated interfaces from PI to PO across nearly all adapters and complex configurations</li>
+          <li>Built and supported REST-based interfaces and grew my API management skills</li>
+          <li>Provided SAP PO and CPI production support</li>
+        </ul>
+      </div>
+      <div class="card job reveal">
+        <h3>Production Engineer</h3>
+        <div class="meta">Teamquest Inc. · February 2020 to April 2021</div>
+        <ul>
+          <li>Ran IC burn-in operations for a major semiconductor client</li>
+          <li>Validated new ovens and handled critical equipment issues</li>
+          <li>Created reports and processes, on 12-hour rotating shifts including nights</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="builds">
+    <div class="kicker">Engineering builds</div>
+    <h2>Things I built before AI</h2>
+    <p class="sub">College projects from 2014 to 2020, from analog amplifiers to a battery management thesis.</p>
+
+    <div class="builds">
+      <!-- PHOTOS: upload as battery.jpg, plate.jpg, maze-car.jpg, water-monitor.jpg -->
+      <figure class="photo reveal">
+        <div class="ph"><div><b>Photo</b>battery.jpg</div></div>
+        <img src="battery.jpg" alt="LiFePO4 battery management system" loading="lazy" onerror="this.remove()">
+        <figcaption>Battery Management System<small>Thesis for LiFePO4 batteries</small></figcaption>
+      </figure>
+      <figure class="photo reveal">
+        <div class="ph"><div><b>Photo</b>plate.jpg</div></div>
+        <img src="plate.jpg" alt="Plate number detection on Raspberry Pi" loading="lazy" onerror="this.remove()">
+        <figcaption>Plate Number Detection<small>Running on a Raspberry Pi</small></figcaption>
+      </figure>
+      <figure class="photo reveal">
+        <div class="ph"><div><b>Photo</b>maze-car.jpg</div></div>
+        <img src="maze-car.jpg" alt="Automatic maze-solving car" loading="lazy" onerror="this.remove()">
+        <figcaption>Maze-Solving Car<small>Finds its own way through</small></figcaption>
+      </figure>
+      <figure class="photo reveal">
+        <div class="ph"><div><b>Photo</b>water-monitor.jpg</div></div>
+        <img src="water-monitor.jpg" alt="IoT water level monitor" loading="lazy" onerror="this.remove()">
+        <figcaption>Water Level Monitor<small>Microcontrollers and Firebase</small></figcaption>
+      </figure>
+    </div>
+
+    <div class="mini">
+      <div class="card reveal"><h3>IC and Antenna Design</h3><p>Designed an integrated circuit and built a TV antenna.</p></div>
+      <div class="card reveal"><h3>Logic Gate Coin Machine</h3><p>A coin machine built with logic gates, plus amplifier circuits.</p></div>
+      <div class="card reveal"><h3>Typing Trainer</h3><p>A Java app that helps improve typing, and a class project website.</p></div>
+    </div>
+  </section>
+
+  <section id="life">
+    <div class="kicker">Beyond work</div>
+    <h2>The people and things I love</h2>
+    <div class="gallery">
+      <!-- PHOTOS: upload as caleb.jpg, dog.jpg, hobby1.jpg, hobby2.jpg -->
+      <figure class="photo g1 reveal">
+        <div class="ph"><div><b>Photo</b>caleb.jpg</div></div>
+        <img src="caleb.jpg" alt="Caleb" loading="lazy" onerror="this.remove()">
+        <figcaption>Caleb<small>My son, my biggest reason to keep building</small></figcaption>
+      </figure>
+      <figure class="photo g2 reveal">
+        <div class="ph"><div><b>Photo</b>dog.jpg</div></div>
+        <img src="dog.jpg" alt="Ji Eun, my dog" loading="lazy" onerror="this.remove()">
+        <figcaption>Ji Eun<small>My loyal buddy at home</small></figcaption>
+      </figure>
+      <figure class="photo g3 reveal">
+        <div class="ph"><div><b>Photo</b>hobby1.jpg</div></div>
+        <img src="hobby1.jpg" alt="Hobby" loading="lazy" onerror="this.remove()">
+        <figcaption>[Hobby 1]<small>[Short caption]</small></figcaption>
+      </figure>
+      <figure class="photo g4 reveal">
+        <div class="ph"><div><b>Photo</b>hobby2.jpg</div></div>
+        <img src="hobby2.jpg" alt="Hobby" loading="lazy" onerror="this.remove()">
+        <figcaption>[Hobby 2]<small>[Short caption]</small></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="card personal reveal" style="text-align:center;padding:44px 22px">
+      <div class="kicker">Contact</div>
+      <h2>Let's talk</h2>
+      <p class="sub" style="margin:0 auto 26px">Open to SAP integration opportunities and good conversations about tech.</p>
+      <div class="btns" style="justify-content:center">
+        <a class="btn primary" href="mailto:your-email@example.com">Email me</a>
+        <a class="btn" href="https://www.linkedin.com/in/your-profile">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© John Angelo Lumor</div>
+</footer>
+
+<script>
+  (function () {
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var hasIO = 'IntersectionObserver' in window;
+
+    // scroll reveal with a small stagger between siblings
+    var els = document.querySelectorAll('.reveal');
+    els.forEach(function (e) {
+      var sibs = Array.prototype.filter.call(e.parentNode.children, function (c) { return c.classList.contains('reveal'); });
+      e.style.transitionDelay = (sibs.indexOf(e) % 4) * 0.09 + 's';
+    });
+    function show(e) {
+      e.classList.add('in');
+      setTimeout(function () { e.classList.add('done'); }, 1100);
+    }
+    if (!hasIO || reduce) { els.forEach(show); }
+    else {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { show(en.target); io.unobserve(en.target); } });
+      }, { threshold: 0.12 });
+      els.forEach(function (e) { io.observe(e); });
+    }
+
+    // number count-up
+    var counters = document.querySelectorAll('[data-count]');
+    function run(el) {
+      var end = +el.dataset.count, suffix = el.dataset.suffix || '', t0 = null, dur = 1600;
+      function step(t) {
+        if (!t0) t0 = t;
+        var p = Math.min((t - t0) / dur, 1);
+        var v = Math.round(end * (1 - Math.pow(1 - p, 3)));
+        el.textContent = v.toLocaleString('en-US') + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    if (hasIO && !reduce) {
+      var co = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { run(en.target); co.unobserve(en.target); } });
+      }, { threshold: 0.6 });
+      counters.forEach(function (c) { c.textContent = '0' + (c.dataset.suffix || ''); co.observe(c); });
+    }
+
+    // rotating role text in the hero
+    var role = document.getElementById('role');
+    if (role && !reduce) {
+      var roles = ['SAP Integration Developer', 'SAP PI/PO and CPI Specialist', 'API and Systems Connector', 'Electronics Engineer'];
+      var i = 0;
+      setInterval(function () {
+        role.classList.add('swap');
+        setTimeout(function () { i = (i + 1) % roles.length; role.textContent = roles[i]; role.classList.remove('swap'); }, 360);
+      }, 2800);
+    }
+
+    // make the marquee loop seamlessly
+    var track = document.querySelector('.marquee .track');
+    if (track) track.innerHTML += track.innerHTML;
+
+    // scroll progress bar
+    var bar = document.querySelector('.progress');
+    function onScroll() {
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      bar.style.transform = 'scaleX(' + (max > 0 ? h.scrollTop / max : 0) + ')';
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+</body>
+</html>
